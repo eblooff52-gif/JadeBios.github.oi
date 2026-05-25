@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jade Bio</title>
+  <link rel="icon" href="logo.png" type="image/png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-site-theme="jade">
+
+  <!-- ГЛАВНАЯ -->
+  <div data-page="home" class="landing jade-landing">
+    <div class="jade-grid-bg"></div>
+    <header class="landing-header">
+      <a href="#" class="landing-logo" onclick="showPage('home');return false">
+        <img src="logo.png" alt="Jade Bio" class="logo-img">
+        <span class="logo-icon">J</span> Jade Bio
+      </a>
+      <nav class="landing-nav" id="nav-home"></nav>
+    </header>
+
+    <section class="jade-hero ez-hero">
+      <div class="ez-preview-side ez-preview-left float-anim">
+        <div class="ez-mini-card bio-mock-card">
+          <div class="bio-mock-avatar-zone">
+            <div class="bio-mock-ava-wrap">
+              <img class="bio-mock-wing bio-mock-wing-l" src="img/wing-left.png" alt="">
+              <div class="bio-mock-ava"></div>
+              <img class="bio-mock-wing bio-mock-wing-r" src="img/wing-right.png" alt="">
+            </div>
+          </div>
+          <div class="bio-mock-name">Player</div>
+          <div class="bio-mock-tag">PRVT<span class="bio-cursor">|</span></div>
+          <div class="bio-mock-uid"><span class="uid-mini">1</span> UID · Ур. 1</div>
+          <div class="bio-mock-player"><div class="bio-mock-prog"><i></i></div></div>
+        </div>
+      </div>
+      <div class="jade-hero-text">
+        <span class="jade-badge anim-up">бесплатно · за 2 минуты</span>
+        <h1 class="anim-up ez-title">Jade <span class="cyan">Bio</span></h1>
+        <p class="anim-up">Заяви о себе в сети — био, музыка, фон, крылья и ссылки в одной странице.</p>
+        <div class="ez-claim anim-up">
+          <span class="ez-claim-prefix">jade.bio/</span>
+          <input type="text" placeholder="ник" readonly onclick="showPage('register')">
+        </div>
+        <ul class="jade-list anim-up">
+          <li>Регистрация по нику и email</li>
+          <li>Ссылка: <code>index.html?u=ник</code></li>
+          <li>Тёмный стиль с музыкой и UID</li>
+        </ul>
+        <div class="landing-cta anim-up" id="hero-cta"></div>
+      </div>
+      <div class="ez-preview-side ez-preview-right float-anim" style="animation-delay:0.5s">
+        <div class="ez-mini-card bio-mock-card alt">
+          <div class="bio-mock-avatar-zone">
+            <div class="bio-mock-ava grad-blue"></div>
+          </div>
+          <div class="bio-mock-name">VIP</div>
+          <div class="bio-mock-social"><span></span><span></span><span></span></div>
+        </div>
+      </div>
+    </section>
+    <div class="jade-tags anim-up" style="justify-content:center;padding:0 24px 32px">
+      <span>0 ₽ бесплатно</span>
+      <span>Музыка и фон</span>
+      <span>Крылья и VIP</span>
+      <span>RU интерфейс</span>
+    </div>
+
+    <section class="jade-steps">
+      <h2>Как это работает</h2>
+      <div class="jade-steps-grid">
+        <div class="step-card anim-up">
+          <span class="step-num">1</span>
+          <h3>Зарегистрируйся</h3>
+          <p>Придумай ник, email и пароль. Нужен инвайт-код от админа.</p>
+          <a class="step-link" onclick="showPage('register')">Перейти к регистрации →</a>
+        </div>
+        <div class="step-card anim-up">
+          <span class="step-num">2</span>
+          <h3>Настрой bio</h3>
+          <p>Аватар, фон, описание, музыка и кнопки Discord, Telegram, YouTube.</p>
+        </div>
+        <div class="step-card anim-up">
+          <span class="step-num">3</span>
+          <h3>Делись ссылкой</h3>
+          <p>Скопируй ссылку на профиль и вставь в соцсети или статус.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="landing-join anim-up">
+      <h2 class="landing-join-title">Чего вы ждёте? Присоединяйтесь к остальным <span class="cyan" id="home-user-count">0</span> пользователям.</h2>
+      <div class="ez-claim landing-claim">
+        <span class="ez-claim-prefix">jade.bio/</span>
+        <input type="text" id="home-claim-input" placeholder="имя пользователя" maxlength="20">
+        <button type="button" class="pill-btn" onclick="claimFromHome()">Заявить права на ссылку</button>
+      </div>
+      <div class="home-users-scroll">
+        <div class="home-users-grid" id="home-users-grid"></div>
+      </div>
+    </section>
+
+    <footer class="landing-footer-ez">
+      <div class="footer-ez-inner">
+        <div class="footer-ez-brand">
+          <a href="#" class="landing-logo footer-logo" onclick="showPage('home');return false">
+            <img src="logo.png" alt="Jade Bio" class="logo-img"><span class="logo-icon">J</span> Jade Bio
+          </a>
+          <div class="footer-social">
+            <a href="#" title="Discord" aria-label="Discord">◇</a>
+            <a href="#" title="GitHub" aria-label="GitHub">◇</a>
+            <a href="#" title="Telegram" aria-label="Telegram">◇</a>
+          </div>
+        </div>
+        <div class="footer-ez-col">
+          <h4>Контакт</h4>
+          <a href="#" onclick="return false">Поддержка</a>
+          <a href="#" onclick="return false">Конфиденциальность</a>
+          <a href="#" onclick="return false">Сообщить о нарушении</a>
+        </div>
+        <div class="footer-ez-col">
+          <h4>Информация</h4>
+          <a href="#" onclick="return false">Условия использования</a>
+          <a href="#" onclick="return false">Руководство</a>
+          <a href="#" onclick="return false">FAQ</a>
+        </div>
+      </div>
+      <p class="footer-copy">© 2025 Jade Bio. Все права защищены.</p>
+    </footer>
+  </div>
+
+  <!-- ВХОД -->
+  <div data-page="login" class="hidden page-auth">
+    <div class="page-center">
+      <div class="panel panel-glass">
+        <span class="back-link" onclick="showPage('home')">← На главную</span>
+        <h1>Войти</h1>
+        <p class="subtitle">Вход в аккаунт</p>
+        <div id="login-msg"></div>
+        <form onsubmit="doLogin(event)">
+          <div class="form-group"><label>Логин или email</label><input name="login" required></div>
+          <div class="form-group"><label>Пароль</label><input type="password" name="password" required></div>
+          <button type="submit" class="btn-full">Войти</button>
+        </form>
+        <p class="preview-link" style="margin-top:16px"><a onclick="showPage('register')">Создать био</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- РЕГИСТРАЦИЯ -->
+  <div data-page="register" class="hidden page-auth">
+    <div class="page-center">
+      <div class="panel panel-glass">
+        <span class="back-link" onclick="showPage('home')">← На главную</span>
+        <h1>Создать био</h1>
+        <p class="subtitle">Нужна ссылка от админа: <code>?invite=VL-XXXX</code> или код</p>
+        <div id="reg-msg"></div>
+        <form onsubmit="doRegister(event)">
+          <div class="form-group"><label>Инвайт</label><input name="invite" required placeholder="VL-XXXXXXXX"></div>
+          <div class="form-group"><label>Ник (в ссылке)</label><input name="username" required pattern="[a-zA-Z0-9_]{3,20}" placeholder="innf1ksss"></div>
+          <div class="form-group"><label>Имя на странице</label><input name="display_name" placeholder="Innf1ksss"></div>
+          <div class="form-group"><label>Email</label><input type="email" name="email" required></div>
+          <div class="form-group"><label>Пароль</label><input type="password" name="password" required minlength="6"></div>
+          <button type="submit" class="btn-full">Создать свой профиль</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- КАБИНЕТ -->
+  <div data-page="dashboard" class="hidden">
+    <div class="page-wrap page-wrap-wide">
+      <div class="page-header">
+        <div>
+          <h1>Личный кабинет</h1>
+          <p class="preview-link">Био: <a id="dash-link" href="#"></a> · UID <strong id="dash-uid">0</strong> · <span id="dash-views">0</span> просмотров</p>
+        </div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap">
+          <button class="pill-btn dark" onclick="openProfile(session()?.username)">Открыть био</button>
+          <button class="link-btn" onclick="logout()">Выход</button>
+        </div>
+      </div>
+      <nav class="tabs" id="dash-nav">
+        <button class="active" type="button" onclick="showPage('dashboard')">Профиль</button>
+        <button type="button" onclick="showPage('shop')">Магазин VIP</button>
+      </nav>
+      <div id="dash-msg"></div>
+      <form id="dash-form" class="dash-layout" onsubmit="saveDashboard(event)">
+        <div class="dash-main">
+          <nav class="dash-tabs" role="tablist">
+            <button type="button" class="active" data-dash-tab="profile" onclick="switchDashTab('profile')">Профиль</button>
+            <button type="button" data-dash-tab="bio" onclick="switchDashTab('bio')">Описание</button>
+            <button type="button" data-dash-tab="links" onclick="switchDashTab('links')">Ссылки</button>
+            <button type="button" data-dash-tab="music" onclick="switchDashTab('music')">Музыка</button>
+            <button type="button" data-dash-tab="deco" onclick="switchDashTab('deco')">Украшения</button>
+          </nav>
+
+          <div class="dash-panel active" data-dash-panel="profile">
+            <div class="section section-flat">
+              <h2>Имя и статус</h2>
+              <div class="form-group"><label>Имя на странице</label><input name="display_name"></div>
+              <div class="form-row">
+                <div class="form-group"><label>Тег (DEVV)</label><input name="tagline" placeholder="DEVV"></div>
+                <div class="form-group"><label>Город</label><input name="location" placeholder="Krasnodar"></div>
+              </div>
+              <div class="form-group"><label>Discord ID (Lanyard)</label><input name="discord_id" placeholder="123456789012345678"></div>
+              <p class="preview-link">Lanyard: <a href="https://discord.gg/lanyard" target="_blank" rel="noopener">discord.gg/lanyard</a> → боту <code>.help</code>. ID: ПКМ по себе в Discord → «Скопировать ID».</p>
+            </div>
+          </div>
+
+          <div class="dash-panel" data-dash-panel="bio">
+            <div class="section section-flat">
+              <h2>Текст био</h2>
+              <div class="form-group"><label>Описание (видно на карточке)</label><textarea name="bio" rows="8" placeholder="Кто ты, чем занимаешься…"></textarea></div>
+            </div>
+          </div>
+
+          <div class="dash-panel" data-dash-panel="links">
+            <div class="section section-flat">
+              <h2>Кнопки и соцсети</h2>
+              <div class="form-group"><label>Discord (профиль)</label><input name="link_discord" placeholder="https://discord.com/users/..."></div>
+              <div class="form-group"><label>Discord сервер</label><input name="link_discord_server" placeholder="https://discord.gg/..."></div>
+              <div class="form-row">
+                <div class="form-group"><label>Telegram</label><input name="link_telegram" placeholder="https://t.me/..."></div>
+                <div class="form-group"><label>Steam</label><input name="link_steam" placeholder="https://steamcommunity.com/..."></div>
+              </div>
+              <div class="form-group"><label>YouTube / Twitch</label><input name="link_youtube" placeholder="https://..."></div>
+              <div class="form-row">
+                <div class="form-group"><label>Своя ссылка</label><input name="link_custom" placeholder="https://..."></div>
+                <div class="form-group"><label>Название</label><input name="link_custom_label" placeholder="Мой сайт"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dash-panel" data-dash-panel="music">
+            <div class="section section-flat">
+              <h2>Трек на странице</h2>
+              <div class="form-row">
+                <div class="form-group"><label>Название</label><input name="music_title" placeholder="Название"></div>
+                <div class="form-group"><label>Артист</label><input name="music_artist" placeholder="Артист"></div>
+              </div>
+              <div class="form-group">
+                <label>MP3 файл</label>
+                <label class="file-upload"><input type="file" name="music" accept="audio/*"><span class="file-btn">🎵 Выбрать трек</span><span class="file-name">Файл не выбран</span></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="dash-panel" data-dash-panel="deco">
+            <div class="section section-flat">
+              <h2>Украшения на био</h2>
+              <div class="form-group"><label>Эффект</label><select name="decoration"></select></div>
+              <p class="preview-link">Искры — всем. Крылья и корона — VIP. Кубики MC — VIP+.</p>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-full dash-save">Сохранить всё</button>
+        </div>
+
+        <aside class="dash-side">
+          <div class="section section-flat dash-side-card">
+            <h2>Оформление</h2>
+            <div class="dash-preview-bg" id="dash-bg-preview">
+              <img id="dash-bg-img" alt="" style="display:none">
+              <span class="dash-preview-placeholder">Фон не задан</span>
+            </div>
+            <div class="dash-preview-ava">
+              <img id="dash-ava-preview" src="default-avatar.svg" alt="">
+            </div>
+            <div class="form-group">
+              <label>Аватар</label>
+              <label class="file-upload"><input type="file" name="avatar" accept="image/*" onchange="previewDashFile(this,'ava')"><span class="file-btn">📷 Выбрать фото</span><span class="file-name">Файл не выбран</span></label>
+            </div>
+            <div class="form-group">
+              <label>Фон страницы</label>
+              <label class="file-upload"><input type="file" name="background" accept="image/*" onchange="previewDashFile(this,'bg')"><span class="file-btn">🖼 Выбрать фон</span><span class="file-name">Файл не выбран</span></label>
+            </div>
+            <div class="form-group">
+              <label>Размытие фона: <strong id="bg-blur-val">28</strong> px <span class="preview-link">(0 = без блюра)</span></label>
+              <input type="range" name="bg_blur" id="bg-blur-range" min="0" max="50" value="28" oninput="document.getElementById('bg-blur-val').textContent=this.value">
+            </div>
+            <p class="preview-link">После сохранения нажми F5 на био.</p>
+            <button type="button" class="pill-btn dark" style="width:100%;margin-top:8px" onclick="openProfile(session()?.username)">Превью био</button>
+          </div>
+        </aside>
+      </form>
+    </div>
+  </div>
+
+  <!-- МАГАЗИН -->
+  <div data-page="shop" class="hidden">
+    <div class="page-wrap">
+      <div class="page-header">
+        <h1>Магазин VIP</h1>
+        <span class="back-link" onclick="showPage('home')">← Главная</span>
+      </div>
+      <nav class="tabs">
+        <button onclick="showPage('dashboard')">Кабинет</button>
+        <button class="active">Магазин</button>
+      </nav>
+      <div id="shop-msg"></div>
+      <div class="shop-grid" id="shop-grid">
+        <div class="shop-card">
+          <h3>VIP</h3>
+          <div class="shop-price">15₽</div>
+          <ul><li>Музыка на био</li><li>Свой фон</li><li>YouTube ссылка</li><li>Тег VIP</li></ul>
+          <button class="btn-full" data-tier="vip">Купить на FunPay</button>
+        </div>
+        <div class="shop-card shop-disabled">
+          <h3>VIP+</h3>
+          <div class="shop-price">50₽</div>
+          <ul><li>Снег / листья</li><li>Всё из VIP</li></ul>
+          <button class="btn-full" data-tier="vipplus" disabled>Скоро</button>
+        </div>
+        <div class="shop-card featured shop-disabled">
+          <h3>VIP Pro</h3>
+          <div class="shop-price">150₽</div>
+          <ul><li>Максимум функций</li></ul>
+          <button class="btn-full" data-tier="vippro" disabled>Скоро</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- АДМИН -->
+  <div data-page="admin" class="hidden">
+    <div class="page-wrap" style="max-width:1000px">
+      <div class="page-header">
+        <h1>Админ-панель</h1>
+        <button class="pill-btn dark" onclick="logout()">Выход</button>
+      </div>
+      <div id="admin-msg"></div>
+      <div class="admin-stats">
+        <div class="stat-card"><div class="num" id="stat-users">0</div><div class="label">Игроков</div></div>
+        <div class="stat-card"><div class="num" id="stat-invites">0</div><div class="label">Инвайтов</div></div>
+      </div>
+      <div class="section hidden" id="fx-panel">
+        <h2>Эффекты (только admin)</h2>
+        <div class="fx-grid">
+          <label class="fx-option"><input type="checkbox" id="fx-snow"> ❄️ Снег</label>
+          <label class="fx-option"><input type="checkbox" id="fx-leaves"> 🍂 Листья</label>
+          <div class="fx-option">Светлая/тёмная <select id="fx-theme"><option value="dark">Тёмная</option><option value="light">Светлая</option></select></div>
+          <div class="fx-option">Тема сайта <select id="site-theme"><option value="jade">Jade (бирюза)</option><option value="gray">Серый</option><option value="minecraft">Minecraft</option><option value="neon">Неон</option></select></div>
+        </div>
+        <button class="btn-full" style="margin-top:12px" onclick="saveFx()">Применить тему</button>
+      </div>
+      <div class="section">
+        <h2>Инвайты</h2>
+        <div class="invite-create-row">
+          <div class="form-group" style="margin:0;width:70px"><label>Кол-во</label><input type="number" id="invite-count" value="1" min="1" max="20"></div>
+          <div class="form-group" style="margin:0;min-width:120px"><label>Выдать при регистрации</label>
+            <select id="invite-grant"><option value="player">Игрок</option><option value="vip">VIP</option><option value="vipplus">VIP+</option><option value="vippro">VIP Pro</option></select>
+          </div>
+          <div class="form-group" style="margin:0;min-width:120px"><label>Украшение</label>
+            <select id="invite-deco"><option value="">—</option><option value="wings">Крылья</option><option value="crown">Корона</option><option value="cubes">Кубики</option></select>
+          </div>
+          <button type="button" class="pill-btn" onclick="createInvites()">Создать</button>
+          <button type="button" class="pill-btn dark" onclick="createVipKeys()">VIP-ключ</button>
+        </div>
+        <p class="preview-link">Другу отправляй кнопку <b>«Ссылка»</b>, не только код.</p>
+      </div>
+      <div class="section">
+        <h2>Игроки</h2>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>UID</th><th>Ник</th><th>Email</th><th>Роль</th><th>VIP</th><th>Просмотры</th><th>IP</th><th></th></tr></thead>
+            <tbody id="admin-players"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="section">
+        <h2>Инвайт-коды</h2>
+        <div class="table-wrap"><table><thead><tr><th>Код</th><th>Привилегия</th><th>Использован</th><th>Кем</th><th>Дата</th></tr></thead><tbody id="admin-invites"></tbody></table></div>
+      </div>
+      <div class="section">
+        <h2>Журнал</h2>
+        <div class="table-wrap"><table><thead><tr><th>Время</th><th>Кто</th><th>Действие</th><th>IP</th></tr></thead><tbody id="admin-logs"></tbody></table></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ПРОФИЛЬ -->
+  <div data-page="profile" class="hidden">
+    <div id="profile-root"></div>
+    <button class="pill-btn dark" style="position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:30" onclick="showPage('home')">← На главную</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
